@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${student.getLastName() + ' ' + student.getFirstName()}">Student name</title>
+</head>
+<body>
+        <h1 th:text="${student.getLastName() + ' ' + student.getFirstName()}">Last name + first name</h1>
+        <b>Id:</b> <span th:text="${student.getId()}">Id</span>
+        <br>
+        <b>First name:</b> <span th:text="${student.getFirstName()}">First name</span>
+        <br>
+        <b>Last name:</b> <span th:text="${student.getLastName()}">Last name</span>
+        <br>
+        <b>Age:</b> <span th:text="${student.getAge()}">Age</span>
+        <br>
+        <b>Is the course paid for?:</b> <span th:text="${student.isCourseIsPaid()}">Is the course paid for?</span>
+        <br>
+        <b>Group:</b> <span th:text="${student.getUniversityGroup()}">Group</span>
+        <hr/>
+        <form th:action="@{/student/{id}/edit (id=${student.getId()})}">
+            <input type="submit" value="Edit"/>
+        </form>
+        <form th:method="DELETE" th:action="@{/student/{id}(id=${student.getId()})}">
+            <input type="submit" value="Delete"/>
+        </form>
+
+</body>
+</html>

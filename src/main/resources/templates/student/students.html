@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+<body>
+<h1>Students</h1>
+<form th:action="@{/student/new}">
+    <input type="submit" value="New student"/>
+</form>
+<br>
+<table style="width:100%">
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Age</th>
+        <th>Is the course paid for?</th>
+        <th>Group</th>
+        <th>Show more</th>
+        <th>Delete</th>
+    </tr>
+
+    <tr th:each="student : ${students}">
+        <td th:text="${student.getId()}">Id</td>
+        <td th:text="${student.getFirstName()}">First name</td>
+        <td th:text="${student.getLastName()}">Last name</td>
+        <td th:text="${student.getAge()}">Age</td>
+        <td th:text="${student.isCourseIsPaid()}">Is the course paid for?</td>
+        <td th:text="${student.getUniversityGroup()}">Group</td>
+        <td>
+            <form th:action="@{/student/{id}(id=${student.getId()})}">
+                <input type="submit" value="Show more"/>
+            </form>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/student/{id}(id=${student.getId()})}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<br>
+<form th:action="@{/student/new}">
+    <input type="submit" value="New student"/>
+</form>
+
+</body>
+</html>
