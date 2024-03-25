@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New student</title>
+</head>
+<body>
+    <form th:method="POST" th:action="@{/student}" th:object="${newStudent}">
+        <label for="firstName">First name: </label>
+        <input type="text" th:field="*{firstName}" id="firstName"/>
+        <br/>
+        <label for="lastName">Last name: </label>
+        <input type="text" th:field="*{lastName}" id="lastName"/>
+        <br/>
+        <label for="age">Age: </label>
+        <input type="text" th:field="*{age}" id="age"/>
+        <br/>
+        <label for="courseIsPaid">Course is paid: </label>
+        <select type="checkbox" th:field="*{courseIsPaid}" id="courseIsPaid">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+        <br/>
+        <label for="universityGroup">Group: </label>
+        <input type="text" th:field="*{universityGroup}" id="universityGroup"/>
+        <br/>
+        <input type="submit" value="Create!"/>
+    </form>
+</body>
+</html>
